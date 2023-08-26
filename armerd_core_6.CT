@@ -77,6 +77,15 @@ start_protected_game.exe+C122FB: CC        - int 3
 start_protected_game.exe+C122FC: CC        - int 3 
 }
 </AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>45</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>5</ID>
@@ -153,6 +162,15 @@ start_protected_game.exe+8EC16C: FF 50 10              - call qword ptr [rax+10]
 start_protected_game.exe+8EC16F: 48 8B 48 10           - mov rcx,[rax+10]
 }
 </AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>8</ID>
@@ -226,6 +244,15 @@ start_protected_game.exe+877037: 33 C0                    - xor eax,eax
 start_protected_game.exe+877039: 0F 28 7C 24 20           - movaps xmm7,[rsp+20]
 }
 </AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
