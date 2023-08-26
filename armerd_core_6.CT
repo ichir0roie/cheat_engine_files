@@ -81,92 +81,7 @@ start_protected_game.exe+C122FC: CC        - int 3
         <Hotkey>
           <Action>Toggle Activation</Action>
           <Keys>
-            <Key>45</Key>
-          </Keys>
-          <ID>0</ID>
-        </Hotkey>
-      </Hotkeys>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>5</ID>
-      <Description>"ammo skip"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : start_protected_game.exe
-  Version: 
-  Date   : 2023-08-25
-  Author : ichir
-
-  This script does blah blah blah
-}
-
-define(address,"start_protected_game.exe"+8EC147)
-define(bytes,89 4F 58 48 8B CB)
-
-[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-
- 
- 
-assert(address,bytes)
-alloc(newmem,$1000,"start_protected_game.exe"+8EC147)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  //mov [rdi+58],ecx
-  //mov rcx,rbx
-  jmp return
-
-address:
-  jmp newmem
-  nop
-return:
-
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-address:
-  db bytes
-  // mov [rdi+58],ecx
-  // mov rcx,rbx
-
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: start_protected_game.exe+8EC147
-
-start_protected_game.exe+8EC127: 48 8B CB              - mov rcx,rbx
-start_protected_game.exe+8EC12A: E8 A1 DB C6 00        - call start_protected_game.exe+1559CD0
-start_protected_game.exe+8EC12F: 0F AF C6              - imul eax,esi
-start_protected_game.exe+8EC132: EB 08                 - jmp start_protected_game.exe+8EC13C
-start_protected_game.exe+8EC134: 48 8B CB              - mov rcx,rbx
-start_protected_game.exe+8EC137: E8 94 DB C6 00        - call start_protected_game.exe+1559CD0
-start_protected_game.exe+8EC13C: 8B 4F 58              - mov ecx,[rdi+58]
-start_protected_game.exe+8EC13F: 2B C8                 - sub ecx,eax
-start_protected_game.exe+8EC141: 85 C9                 - test ecx,ecx
-start_protected_game.exe+8EC143: 41 0F 4E CE           - cmovle ecx,r14d
-// ---------- INJECTING HERE ----------
-start_protected_game.exe+8EC147: 89 4F 58              - mov [rdi+58],ecx
-// ---------- DONE INJECTING  ----------
-start_protected_game.exe+8EC14A: 48 8B CB              - mov rcx,rbx
-start_protected_game.exe+8EC14D: E8 3E DB C6 00        - call start_protected_game.exe+1559C90
-start_protected_game.exe+8EC152: 0F 28 C8              - movaps xmm1,xmm0
-start_protected_game.exe+8EC155: 48 8D 8F C8 00 00 00  - lea rcx,[rdi+000000C8]
-start_protected_game.exe+8EC15C: E8 CF F8 FF FF        - call start_protected_game.exe+8EBA30
-start_protected_game.exe+8EC161: 48 8B 0F              - mov rcx,[rdi]
-start_protected_game.exe+8EC164: 48 8D 54 24 20        - lea rdx,[rsp+20]
-start_protected_game.exe+8EC169: 48 8B 01              - mov rax,[rcx]
-start_protected_game.exe+8EC16C: FF 50 10              - call qword ptr [rax+10]
-start_protected_game.exe+8EC16F: 48 8B 48 10           - mov rcx,[rax+10]
-}
-</AssemblerScript>
-      <Hotkeys>
-        <Hotkey Active="0">
-          <Action>Toggle Activation</Action>
-          <Keys>
-            <Key>18</Key>
+            <Key>112</Key>
           </Keys>
           <ID>0</ID>
         </Hotkey>
@@ -248,7 +163,7 @@ start_protected_game.exe+877039: 0F 28 7C 24 20           - movaps xmm7,[rsp+20]
         <Hotkey>
           <Action>Toggle Activation</Action>
           <Keys>
-            <Key>17</Key>
+            <Key>113</Key>
           </Keys>
           <ID>0</ID>
         </Hotkey>
@@ -335,7 +250,7 @@ start_protected_game.exe+8EC164: 48 8D 54 24 20        - lea rdx,[rsp+20]
         <Hotkey>
           <Action>Toggle Activation</Action>
           <Keys>
-            <Key>18</Key>
+            <Key>114</Key>
           </Keys>
           <ID>0</ID>
         </Hotkey>
