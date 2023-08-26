@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>20C0E843084</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"stamina"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MadeInAbyss-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-08-20
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"MadeInAbyss-Win64-Shipping.exe"+DD6364)
+define(bytes,F3 0F 5C C7 F3 0F 5F C6)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"MadeInAbyss-Win64-Shipping.exe"+DD6364)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //subss xmm0,xmm7
+  //maxss xmm0,xmm6
+  jmp return
+
+address:
+  jmp newmem
+  nop 3
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // subss xmm0,xmm7
+  // maxss xmm0,xmm6
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: MadeInAbyss-Win64-Shipping.exe+DD6364
+
+MadeInAbyss-Win64-Shipping.exe+DD6334: C3                       - ret 
+MadeInAbyss-Win64-Shipping.exe+DD6335: 40 80 FF 01              - cmp dil,01
+MadeInAbyss-Win64-Shipping.exe+DD6339: 0F 85 81 00 00 00        - jne MadeInAbyss-Win64-Shipping.exe+DD63C0
+MadeInAbyss-Win64-Shipping.exe+DD633F: F3 0F 10 83 30 02 00 00  - movss xmm0,[rbx+00000230]
+MadeInAbyss-Win64-Shipping.exe+DD6347: 0F 57 F6                 - xorps xmm6,xmm6
+MadeInAbyss-Win64-Shipping.exe+DD634A: 48 8B 83 68 02 00 00     - mov rax,[rbx+00000268]
+MadeInAbyss-Win64-Shipping.exe+DD6351: 0F 2F C6                 - comiss xmm0,xmm6
+MadeInAbyss-Win64-Shipping.exe+DD6354: F3 0F 59 78 04           - mulss xmm7,[rax+04]
+MadeInAbyss-Win64-Shipping.exe+DD6359: 40 0F 97 C6              - seta sil
+MadeInAbyss-Win64-Shipping.exe+DD635D: 83 BB 38 03 00 00 01     - cmp dword ptr [rbx+00000338],01
+// ---------- INJECTING HERE ----------
+MadeInAbyss-Win64-Shipping.exe+DD6364: F3 0F 5C C7              - subss xmm0,xmm7
+// ---------- DONE INJECTING  ----------
+MadeInAbyss-Win64-Shipping.exe+DD6368: F3 0F 5F C6              - maxss xmm0,xmm6
+MadeInAbyss-Win64-Shipping.exe+DD636C: F3 0F 11 83 30 02 00 00  - movss [rbx+00000230],xmm0
+MadeInAbyss-Win64-Shipping.exe+DD6374: 7E 4A                    - jle MadeInAbyss-Win64-Shipping.exe+DD63C0
+MadeInAbyss-Win64-Shipping.exe+DD6376: 0F 2F C6                 - comiss xmm0,xmm6
+MadeInAbyss-Win64-Shipping.exe+DD6379: 76 0B                    - jna MadeInAbyss-Win64-Shipping.exe+DD6386
+MadeInAbyss-Win64-Shipping.exe+DD637B: 0F 28 F0                 - movaps xmm6,xmm0
+MadeInAbyss-Win64-Shipping.exe+DD637E: F3 0F 59 35 F6 2B 58 02  - mulss xmm6,[MadeInAbyss-Win64-Shipping.exe+3358F7C]
+MadeInAbyss-Win64-Shipping.exe+DD6386: 48 8B 8B 30 03 00 00     - mov rcx,[rbx+00000330]
+MadeInAbyss-Win64-Shipping.exe+DD638D: 0F 2E 41 0C              - ucomiss xmm0,[rcx+0C]
+MadeInAbyss-Win64-Shipping.exe+DD6391: 74 28                    - je MadeInAbyss-Win64-Shipping.exe+DD63BB
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"item dec"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MadeInAbyss-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-08-20
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"MadeInAbyss-Win64-Shipping.exe"+DD0FEE)
+define(bytes,29 44 D1 04 41 2B 28)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"MadeInAbyss-Win64-Shipping.exe"+DD0FEE)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //sub [rcx+rdx*8+04],eax
+  //sub ebp,[r8]
+  jmp return
+
+address:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // sub [rcx+rdx*8+04],eax
+  // sub ebp,[r8]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: MadeInAbyss-Win64-Shipping.exe+DD0FEE
+
+MadeInAbyss-Win64-Shipping.exe+DD0FC2: 0F 8E D0 00 00 00        - jng MadeInAbyss-Win64-Shipping.exe+DD1098
+MadeInAbyss-Win64-Shipping.exe+DD0FC8: 4C 89 74 24 78           - mov [rsp+78],r14
+MadeInAbyss-Win64-Shipping.exe+DD0FCD: 4D 8D 45 04              - lea r8,[r13+04]
+MadeInAbyss-Win64-Shipping.exe+DD0FD1: 44 8B C8                 - mov r9d,eax
+MadeInAbyss-Win64-Shipping.exe+DD0FD4: 0F 1F 40 00              - nop dword ptr [rax+00]
+MadeInAbyss-Win64-Shipping.exe+DD0FD8: 0F 1F 84 00 00 00 00 00  - nop dword ptr [rax+rax+00000000]
+MadeInAbyss-Win64-Shipping.exe+DD0FE0: 41 8B 00                 - mov eax,[r8]
+MadeInAbyss-Win64-Shipping.exe+DD0FE3: 49 63 50 FC              - movsxd  rdx,dword ptr [r8-04]
+MadeInAbyss-Win64-Shipping.exe+DD0FE7: 49 8B 4F 08              - mov rcx,[r15+08]
+MadeInAbyss-Win64-Shipping.exe+DD0FEB: 48 03 D2                 - add rdx,rdx
+// ---------- INJECTING HERE ----------
+MadeInAbyss-Win64-Shipping.exe+DD0FEE: 29 44 D1 04              - sub [rcx+rdx*8+04],eax
+// ---------- DONE INJECTING  ----------
+MadeInAbyss-Win64-Shipping.exe+DD0FF2: 41 2B 28                 - sub ebp,[r8]
+MadeInAbyss-Win64-Shipping.exe+DD0FF5: 8B C5                    - mov eax,ebp
+MadeInAbyss-Win64-Shipping.exe+DD0FF7: 8B EB                    - mov ebp,ebx
+MadeInAbyss-Win64-Shipping.exe+DD0FF9: 0F 49 E8                 - cmovns ebp,eax
+MadeInAbyss-Win64-Shipping.exe+DD0FFC: 49 8B 47 08              - mov rax,[r15+08]
+MadeInAbyss-Win64-Shipping.exe+DD1000: 39 5C D0 04              - cmp [rax+rdx*8+04],ebx
+MadeInAbyss-Win64-Shipping.exe+DD1004: 7F 05                    - jg MadeInAbyss-Win64-Shipping.exe+DD100B
+MadeInAbyss-Win64-Shipping.exe+DD1006: 41 B2 01                 - mov r10b,01
+MadeInAbyss-Win64-Shipping.exe+DD1009: EB 09                    - jmp MadeInAbyss-Win64-Shipping.exe+DD1014
+MadeInAbyss-Win64-Shipping.exe+DD100B: 83 FF FF                 - cmp edi,-01
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"item usage"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MadeInAbyss-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-08-20
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"nvwgf2umx.dll"+13152D2)
+define(bytes,41 89 0C 10 41 C7 44 10 04 01 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"nvwgf2umx.dll"+13152D2)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [r8+rdx],ecx
+  //mov [r8+rdx+04],00000001
+  jmp return
+
+address:
+  jmp newmem
+  nop 8
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [r8+rdx],ecx
+  // mov [r8+rdx+04],00000001
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: nvwgf2umx.dll+13152D2
+
+nvwgf2umx.dll+13152B2: 41 8B 0C 89                 - mov ecx,[r9+rcx*4]
+nvwgf2umx.dll+13152B6: EB 09                       - jmp nvwgf2umx.dll+13152C1
+nvwgf2umx.dll+13152B8: 48 39 5C D4 78              - cmp [rsp+rdx*8+78],rbx
+nvwgf2umx.dll+13152BD: 75 22                       - jne nvwgf2umx.dll+13152E1
+nvwgf2umx.dll+13152BF: 8B CB                       - mov ecx,ebx
+nvwgf2umx.dll+13152C1: 48 8B 56 20                 - mov rdx,[rsi+20]
+nvwgf2umx.dll+13152C5: 41 39 0C 10                 - cmp [r8+rdx],ecx
+nvwgf2umx.dll+13152C9: 75 07                       - jne nvwgf2umx.dll+13152D2
+nvwgf2umx.dll+13152CB: 41 FF 44 10 04              - inc [r8+rdx+04]
+nvwgf2umx.dll+13152D0: EB 17                       - jmp nvwgf2umx.dll+13152E9
+// ---------- INJECTING HERE ----------
+nvwgf2umx.dll+13152D2: 41 89 0C 10                 - mov [r8+rdx],ecx
+// ---------- DONE INJECTING  ----------
+nvwgf2umx.dll+13152D6: 41 C7 44 10 04 01 00 00 00  - mov [r8+rdx+04],00000001
+nvwgf2umx.dll+13152DF: EB 08                       - jmp nvwgf2umx.dll+13152E9
+nvwgf2umx.dll+13152E1: 48 8B 46 20                 - mov rax,[rsi+20]
+nvwgf2umx.dll+13152E5: 49 89 1C 00                 - mov [r8+rax],rbx
+nvwgf2umx.dll+13152E9: 49 83 C2 04                 - add r10,04
+nvwgf2umx.dll+13152ED: 49 83 C0 08                 - add r8,08
+nvwgf2umx.dll+13152F1: 49 83 EB 01                 - sub r11,01
+nvwgf2umx.dll+13152F5: 75 89                       - jne nvwgf2umx.dll+1315280
+nvwgf2umx.dll+13152F7: 8B 46 18                    - mov eax,[rsi+18]
+nvwgf2umx.dll+13152FA: 85 C0                       - test eax,eax
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MadeInAbyss-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-08-20
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"msvcrt.dll"+796A2)
+define(bytes,0F 29 51 D0 0F 29 59 E0)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"msvcrt.dll"+796A2)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //movaps [rcx-30],xmm2
+  //movaps [rcx-20],xmm3
+  jmp return
+
+address:
+  jmp newmem
+  nop 3
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // movaps [rcx-30],xmm2
+  // movaps [rcx-20],xmm3
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: msvcrt.memcpy+122
+
+msvcrt.memcpy+E2: 66 66 66 66 66 66 66 0F 1F 84 00 00 00 00 00  - nop word ptr [rax+rax+00000000]
+msvcrt.memcpy+F1: 66 66 66 66 66 66 66 0F 1F 84 00 00 00 00 00  - nop word ptr [rax+rax+00000000]
+msvcrt.memcpy+100: 0F 10 0C 11                                   - movups xmm1,[rcx+rdx]
+msvcrt.memcpy+104: 0F 10 54 11 10                                - movups xmm2,[rcx+rdx+10]
+msvcrt.memcpy+109: 0F 10 5C 11 20                                - movups xmm3,[rcx+rdx+20]
+msvcrt.memcpy+10E: 0F 10 64 11 30                                - movups xmm4,[rcx+rdx+30]
+msvcrt.memcpy+113: 0F 29 41 F0                                   - movaps [rcx-10],xmm0
+msvcrt.memcpy+117: 48 83 C1 40                                   - add rcx,40
+msvcrt.memcpy+11B: 49 FF C9                                      - dec r9
+msvcrt.memcpy+11E: 0F 29 49 C0                                   - movaps [rcx-40],xmm1
+// ---------- INJECTING HERE ----------
+msvcrt.memcpy+122: 0F 29 51 D0                                   - movaps [rcx-30],xmm2
+// ---------- DONE INJECTING  ----------
+msvcrt.memcpy+126: 0F 29 59 E0                                   - movaps [rcx-20],xmm3
+msvcrt.memcpy+12A: 0F 28 C4                                      - movaps xmm0,xmm4
+msvcrt.memcpy+12D: 75 D1                                         - jne msvcrt.memcpy+100
+msvcrt.memcpy+12F: 4D 8B C8                                      - mov r9,r8
+msvcrt.memcpy+132: 49 C1 E9 04                                   - shr r9,04
+msvcrt.memcpy+136: 74 19                                         - je msvcrt.memcpy+151
+msvcrt.memcpy+138: 0F 1F 84 00 00 00 00 00                       - nop dword ptr [rax+rax+00000000]
+msvcrt.memcpy+140: 0F 29 41 F0                                   - movaps [rcx-10],xmm0
+msvcrt.memcpy+144: 0F 10 04 11                                   - movups xmm0,[rcx+rdx]
+msvcrt.memcpy+148: 48 83 C1 10                                   - add rcx,10
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MadeInAbyss-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-08-20
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"msvcrt.dll"+79697)
+define(bytes,48 83 C1 40 49 FF C9)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"msvcrt.dll"+79697)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //add rcx,40
+  //dec r9
+  jmp return
+
+address:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // add rcx,40
+  // dec r9
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: msvcrt.memcpy+117
+
+msvcrt.memcpy+CD: 49 83 E0 3F                                   - and r8,3F
+msvcrt.memcpy+D1: EB 2D                                         - jmp msvcrt.memcpy+100
+msvcrt.memcpy+D3: 66 66 66 66 66 66 66 0F 1F 84 00 00 00 00 00  - nop word ptr [rax+rax+00000000]
+msvcrt.memcpy+E2: 66 66 66 66 66 66 66 0F 1F 84 00 00 00 00 00  - nop word ptr [rax+rax+00000000]
+msvcrt.memcpy+F1: 66 66 66 66 66 66 66 0F 1F 84 00 00 00 00 00  - nop word ptr [rax+rax+00000000]
+msvcrt.memcpy+100: 0F 10 0C 11                                   - movups xmm1,[rcx+rdx]
+msvcrt.memcpy+104: 0F 10 54 11 10                                - movups xmm2,[rcx+rdx+10]
+msvcrt.memcpy+109: 0F 10 5C 11 20                                - movups xmm3,[rcx+rdx+20]
+msvcrt.memcpy+10E: 0F 10 64 11 30                                - movups xmm4,[rcx+rdx+30]
+msvcrt.memcpy+113: 0F 29 41 F0                                   - movaps [rcx-10],xmm0
+// ---------- INJECTING HERE ----------
+msvcrt.memcpy+117: 48 83 C1 40                                   - add rcx,40
+// ---------- DONE INJECTING  ----------
+msvcrt.memcpy+11B: 49 FF C9                                      - dec r9
+msvcrt.memcpy+11E: 0F 29 49 C0                                   - movaps [rcx-40],xmm1
+msvcrt.memcpy+122: 0F 29 51 D0                                   - movaps [rcx-30],xmm2
+msvcrt.memcpy+126: 0F 29 59 E0                                   - movaps [rcx-20],xmm3
+msvcrt.memcpy+12A: 0F 28 C4                                      - movaps xmm0,xmm4
+msvcrt.memcpy+12D: 75 D1                                         - jne msvcrt.memcpy+100
+msvcrt.memcpy+12F: 4D 8B C8                                      - mov r9,r8
+msvcrt.memcpy+132: 49 C1 E9 04                                   - shr r9,04
+msvcrt.memcpy+136: 74 19                                         - je msvcrt.memcpy+151
+msvcrt.memcpy+138: 0F 1F 84 00 00 00 00 00                       - nop dword ptr [rax+rax+00000000]
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
