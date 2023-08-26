@@ -256,6 +256,44 @@ start_protected_game.exe+8EC164: 48 8D 54 24 20        - lea rdx,[rsp+20]
         </Hotkey>
       </Hotkeys>
     </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"hp pointer"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>7FF4FA1A5C30</Address>
+      <Offsets>
+        <Offset>278</Offset>
+      </Offsets>
+    </CheatEntry>
   </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov [rcx+00000278],eax</Description>
+      <AddressString>start_protected_game.exe+8172C4</AddressString>
+      <Before>
+        <Byte>4F</Byte>
+        <Byte>C1</Byte>
+        <Byte>8B</Byte>
+        <Byte>04</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>81</Byte>
+        <Byte>78</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
   <UserdefinedSymbols/>
 </CheatTable>
