@@ -257,10 +257,10 @@ start_protected_game.exe+8EC164: 48 8D 54 24 20        - lea rdx,[rsp+20]
       </Hotkeys>
     </CheatEntry>
     <CheatEntry>
-      <ID>19</ID>
-      <Description>"No Description"</Description>
+      <ID>10</ID>
+      <Description>"repeir amount?"</Description>
       <VariableType>4 Bytes</VariableType>
-      <Address>7FF4D2C37D08</Address>
+      <Address>7FF4D2C38A58</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
