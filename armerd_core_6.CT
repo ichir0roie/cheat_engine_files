@@ -262,6 +262,90 @@ start_protected_game.exe+8EC164: 48 8D 54 24 20        - lea rdx,[rsp+20]
       <VariableType>4 Bytes</VariableType>
       <Address>7FF4D2C38A58</Address>
     </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"damage skip"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : ARMORED CORE VI FIRES OF RUBICON
+  Version: 
+  Date   : 2023-08-27
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"start_protected_game.exe"+818AFC)
+define(bytes,89 83 78 02 00 00)
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+assert(address,bytes)
+alloc(newmem,$1000,"start_protected_game.exe"+818AFC)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add eax,fff
+  mov [rbx+00000278],eax
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+address:
+  db bytes
+  // mov [rbx+00000278],eax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: start_protected_game.exe+818AFC
+
+start_protected_game.exe+818AD7: 89 44 24 40                    - mov [rsp+40],eax
+start_protected_game.exe+818ADB: 48 8D 8B 7C 02 00 00           - lea rcx,[rbx+0000027C]
+start_protected_game.exe+818AE2: 44 3B D0                       - cmp r10d,eax
+start_protected_game.exe+818AE5: 7D 07                          - jnl start_protected_game.exe+818AEE
+start_protected_game.exe+818AE7: 48 8D 44 24 40                 - lea rax,[rsp+40]
+start_protected_game.exe+818AEC: EB 0C                          - jmp start_protected_game.exe+818AFA
+start_protected_game.exe+818AEE: 44 3B 11                       - cmp r10d,[rcx]
+start_protected_game.exe+818AF1: 48 8D 44 24 38                 - lea rax,[rsp+38]
+start_protected_game.exe+818AF6: 48 0F 4F C1                    - cmovg rax,rcx
+start_protected_game.exe+818AFA: 8B 00                          - mov eax,[rax]
+// ---------- INJECTING HERE ----------
+start_protected_game.exe+818AFC: 89 83 78 02 00 00              - mov [rbx+00000278],eax
+// ---------- DONE INJECTING  ----------
+start_protected_game.exe+818B02: 85 C0                          - test eax,eax
+start_protected_game.exe+818B04: 7F 4E                          - jg start_protected_game.exe+818B54
+start_protected_game.exe+818B06: 41 0F B6 D1                    - movzx edx,r9b
+start_protected_game.exe+818B0A: 48 8B CB                       - mov rcx,rbx
+start_protected_game.exe+818B0D: E8 9E DB FF FF                 - call start_protected_game.exe+8166B0
+start_protected_game.exe+818B12: 84 C0                          - test al,al
+start_protected_game.exe+818B14: 74 3E                          - je start_protected_game.exe+818B54
+start_protected_game.exe+818B16: 48 8B CB                       - mov rcx,rbx
+start_protected_game.exe+818B19: C7 83 78 02 00 00 01 00 00 00  - mov [rbx+00000278],00000001
+start_protected_game.exe+818B23: E8 C8 93 00 00                 - call start_protected_game.exe+821EF0
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey OnlyWhileDown="1">
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>115</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
 </CheatTable>
