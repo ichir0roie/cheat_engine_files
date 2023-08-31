@@ -75,98 +75,7 @@ CodeVein-Win64-Shipping.exe+62FDAD1: 0F B6 53 10              - movzx edx,byte p
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>11</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>CAAA7624</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>12</ID>
-      <Description>"st"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : CODE VEIN 
-  Version: 
-  Date   : 2023-08-31
-  Author : ichir
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-
- 
- 
-aobscanmodule(INJECT,CodeVein-Win64-Shipping.exe,F3 0F 11 BF 64 02 00 00) // should be unique
-alloc(newmem,$1000,INJECT)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  //movss [rdi+00000264],xmm7
-  add [rdi+00000264],ff
-  jmp return
-
-INJECT:
-  jmp newmem
-  nop 3
-return:
-registersymbol(INJECT)
-
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-INJECT:
-  db F3 0F 11 BF 64 02 00 00
-
-unregistersymbol(INJECT)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: CodeVein-Win64-Shipping.exe+5FEE289
-
-CodeVein-Win64-Shipping.exe+5FEE265: 0F 28 C8                 - movaps xmm1,xmm0
-CodeVein-Win64-Shipping.exe+5FEE268: FF 90 A0 00 00 00        - call qword ptr [rax+000000A0]
-CodeVein-Win64-Shipping.exe+5FEE26E: 48 8B 03                 - mov rax,[rbx]
-CodeVein-Win64-Shipping.exe+5FEE271: 48 89 D9                 - mov rcx,rbx
-CodeVein-Win64-Shipping.exe+5FEE274: FF 90 30 01 00 00        - call qword ptr [rax+00000130]
-CodeVein-Win64-Shipping.exe+5FEE27A: 0F 2F F7                 - comiss xmm6,xmm7
-CodeVein-Win64-Shipping.exe+5FEE27D: 72 07                    - jb CodeVein-Win64-Shipping.exe+5FEE286
-stamina: F3 0F 5D C6              - minss xmm0,xmm6
-CodeVein-Win64-Shipping.exe+5FEE283: 0F 28 F8                 - movaps xmm7,xmm0
-CodeVein-Win64-Shipping.exe+5FEE286: 48 89 F9                 - mov rcx,rdi
-// ---------- INJECTING HERE ----------
-CodeVein-Win64-Shipping.exe+5FEE289: F3 0F 11 BF 64 02 00 00  - movss [rdi+00000264],xmm7
-// ---------- DONE INJECTING  ----------
-CodeVein-Win64-Shipping.exe+5FEE291: E8 4A 87 52 FA           - call CodeVein-Win64-Shipping.exe+5169E0
-CodeVein-Win64-Shipping.exe+5FEE296: 0F 28 7C 24 20           - movaps xmm7,[rsp+20]
-CodeVein-Win64-Shipping.exe+5FEE29B: 48 8B 5C 24 50           - mov rbx,[rsp+50]
-CodeVein-Win64-Shipping.exe+5FEE2A0: 0F 28 74 24 30           - movaps xmm6,[rsp+30]
-CodeVein-Win64-Shipping.exe+5FEE2A5: 48 83 C4 40              - add rsp,40
-CodeVein-Win64-Shipping.exe+5FEE2A9: 5F                       - pop rdi
-CodeVein-Win64-Shipping.exe+5FEE2AA: C3                       - ret 
-CodeVein-Win64-Shipping.exe+5FEE2AB: CC                       - int 3 
-CodeVein-Win64-Shipping.exe+5FEE2AC: 41 29 C5                 - sub r13d,eax
-CodeVein-Win64-Shipping.exe+5FEE2AF: 41 5D                    - pop r13
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>13</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>538B6944</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>14</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>4D540600</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>15</ID>
+      <ID>16</ID>
       <Description>"Auto Assemble script"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : CODE VEIN 
@@ -182,7 +91,7 @@ CodeVein-Win64-Shipping.exe+5FEE2AF: 41 5D                    - pop r13
 
  
  
-aobscanmodule(INJECT,CodeVein-Win64-Shipping.exe,F3 0F 11 BE 00 05 00 00) // should be unique
+aobscanmodule(INJECT,CodeVein-Win64-Shipping.exe,F3 0F 5D C6 0F 28 F8 48) // should be unique
 alloc(newmem,$1000,INJECT)
 
 label(code)
@@ -191,50 +100,50 @@ label(return)
 newmem:
 
 code:
-  movss [rsi+00000500],xmm7
-  add [rsi+00000500],ff
+  //minss xmm0,xmm6
+  movaps xmm7,xmm0
   jmp return
 
 INJECT:
   jmp newmem
-  nop 3
+  nop 2
 return:
 registersymbol(INJECT)
 
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
 INJECT:
-  db F3 0F 11 BE 00 05 00 00
+  db F3 0F 5D C6 0F 28 F8
 
 unregistersymbol(INJECT)
 dealloc(newmem)
 
 {
-// ORIGINAL CODE - INJECTION POINT: CodeVein-Win64-Shipping.exe+630170B
+// ORIGINAL CODE - INJECTION POINT: stamina
 
-CodeVein-Win64-Shipping.exe+63016E2: 48 8B 9C 24 B0 00 00 00  - mov rbx,[rsp+000000B0]
-CodeVein-Win64-Shipping.exe+63016EA: 48 8B 07                 - mov rax,[rdi]
-CodeVein-Win64-Shipping.exe+63016ED: 48 89 F9                 - mov rcx,rdi
-CodeVein-Win64-Shipping.exe+63016F0: FF 50 78                 - call qword ptr [rax+78]
-CodeVein-Win64-Shipping.exe+63016F3: 44 0F 2F C7              - comiss xmm8,xmm7
-CodeVein-Win64-Shipping.exe+63016F7: 48 8B BC 24 B8 00 00 00  - mov rdi,[rsp+000000B8]
-CodeVein-Win64-Shipping.exe+63016FF: 72 08                    - jb CodeVein-Win64-Shipping.exe+6301709
-ichor: F3 41 0F 5D C0           - minss xmm0,xmm8
-CodeVein-Win64-Shipping.exe+6301706: 0F 28 F8                 - movaps xmm7,xmm0
-CodeVein-Win64-Shipping.exe+6301709: 31 C0                    - xor eax,eax
+CodeVein-Win64-Shipping.exe+5FEE256: F3 0F 58 C6              - addss xmm0,xmm6
+CodeVein-Win64-Shipping.exe+5FEE25A: 48 89 D9                 - mov rcx,rbx
+CodeVein-Win64-Shipping.exe+5FEE25D: F3 0F 5F 05 A3 5B C7 FC  - maxss xmm0,[CodeVein-Win64-Shipping.exe+2C63E08]
+CodeVein-Win64-Shipping.exe+5FEE265: 0F 28 C8                 - movaps xmm1,xmm0
+CodeVein-Win64-Shipping.exe+5FEE268: FF 90 A0 00 00 00        - call qword ptr [rax+000000A0]
+CodeVein-Win64-Shipping.exe+5FEE26E: 48 8B 03                 - mov rax,[rbx]
+CodeVein-Win64-Shipping.exe+5FEE271: 48 89 D9                 - mov rcx,rbx
+CodeVein-Win64-Shipping.exe+5FEE274: FF 90 30 01 00 00        - call qword ptr [rax+00000130]
+CodeVein-Win64-Shipping.exe+5FEE27A: 0F 2F F7                 - comiss xmm6,xmm7
+CodeVein-Win64-Shipping.exe+5FEE27D: 72 07                    - jb CodeVein-Win64-Shipping.exe+5FEE286
 // ---------- INJECTING HERE ----------
-CodeVein-Win64-Shipping.exe+630170B: F3 0F 11 BE 00 05 00 00  - movss [rsi+00000500],xmm7
+stamina: F3 0F 5D C6              - minss xmm0,xmm6
 // ---------- DONE INJECTING  ----------
-CodeVein-Win64-Shipping.exe+6301713: 48 8D 54 24 30           - lea rdx,[rsp+30]
-CodeVein-Win64-Shipping.exe+6301718: 48 89 44 24 50           - mov [rsp+50],rax
-CodeVein-Win64-Shipping.exe+630171D: 89 44 24 60              - mov [rsp+60],eax
-CodeVein-Win64-Shipping.exe+6301721: 8D 48 10                 - lea ecx,[rax+10]
-CodeVein-Win64-Shipping.exe+6301724: E8 D7 D2 0B FA           - call CodeVein-Win64-Shipping.exe+3BEA00
-CodeVein-Win64-Shipping.exe+6301729: 44 0F 28 44 24 70        - movaps xmm8,[rsp+70]
-CodeVein-Win64-Shipping.exe+630172F: 0F 28 BC 24 80 00 00 00  - movaps xmm7,[rsp+00000080]
-CodeVein-Win64-Shipping.exe+6301737: 48 85 C0                 - test rax,rax
-CodeVein-Win64-Shipping.exe+630173A: 74 0E                    - je CodeVein-Win64-Shipping.exe+630174A
-CodeVein-Win64-Shipping.exe+630173C: 48 8D 0D 85 FD 9B FC     - lea rcx,[CodeVein-Win64-Shipping.exe+2CC14C8]
+CodeVein-Win64-Shipping.exe+5FEE283: 0F 28 F8                 - movaps xmm7,xmm0
+CodeVein-Win64-Shipping.exe+5FEE286: 48 89 F9                 - mov rcx,rdi
+CodeVein-Win64-Shipping.exe+5FEE289: F3 0F 11 BF 64 02 00 00  - movss [rdi+00000264],xmm7
+CodeVein-Win64-Shipping.exe+5FEE291: E8 4A 87 52 FA           - call CodeVein-Win64-Shipping.exe+5169E0
+CodeVein-Win64-Shipping.exe+5FEE296: 0F 28 7C 24 20           - movaps xmm7,[rsp+20]
+CodeVein-Win64-Shipping.exe+5FEE29B: 48 8B 5C 24 50           - mov rbx,[rsp+50]
+CodeVein-Win64-Shipping.exe+5FEE2A0: 0F 28 74 24 30           - movaps xmm6,[rsp+30]
+CodeVein-Win64-Shipping.exe+5FEE2A5: 48 83 C4 40              - add rsp,40
+CodeVein-Win64-Shipping.exe+5FEE2A9: 5F                       - pop rdi
+CodeVein-Win64-Shipping.exe+5FEE2AA: C3                       - ret 
 }
 </AssemblerScript>
     </CheatEntry>
