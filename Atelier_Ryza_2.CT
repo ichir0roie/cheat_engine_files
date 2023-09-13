@@ -225,24 +225,6 @@ Atelier_Ryza_2.exe+577660: 39 01                          - cmp [rcx],eax
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>8</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>34EA2CE8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>9</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>34E9C908</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>10</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>34E950D8</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>11</ID>
       <Description>"battle cc"</Description>
       <VariableType>Auto Assembler Script</VariableType>
@@ -269,7 +251,7 @@ newmem:
 
 code:
   movss [rbx+38],xmm6
-  mov [rbx+38],1
+  add [rbx+38],fff
   jmp return
 
 address:
@@ -310,6 +292,160 @@ Atelier_Ryza_2.exe+35B09: 66 0F 5A C1              - cvtpd2ps xmm0,xmm1
 Atelier_Ryza_2.exe+35B0D: 0F 2F 05 90 CA D0 00     - comiss xmm0,[Atelier_Ryza_2.exe+D425A4]
 Atelier_Ryza_2.exe+35B14: 73 0A                    - jae Atelier_Ryza_2.exe+35B20
 Atelier_Ryza_2.exe+35B16: B9 D6 03 00 00           - mov ecx,000003D6
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"money pointer?"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Atelier_Ryza_2.exe+17F3D08</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"add money"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Atelier Ryza 2: Lost Legends &amp; the Secret Fairy
+  Version: 
+  Date   : 2023-09-13
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"Atelier_Ryza_2.exe"+575C82)
+define(bytes,01 1D 80 E0 27 01)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"Atelier_Ryza_2.exe"+575C82)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add [Atelier_Ryza_2.exe+17F3D08],f
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // add [Atelier_Ryza_2.exe+17F3D08],ebx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Atelier_Ryza_2.exe+575C82
+
+Atelier_Ryza_2.exe+575C55: 44 8B 05 AC E0 27 01  - mov r8d,[Atelier_Ryza_2.exe+17F3D08]
+Atelier_Ryza_2.exe+575C5C: 41 BA 3F 42 0F 00     - mov r10d,000F423F
+Atelier_Ryza_2.exe+575C62: 44 2B D1              - sub r10d,ecx
+Atelier_Ryza_2.exe+575C65: B8 3F 42 0F 00        - mov eax,000F423F
+Atelier_Ryza_2.exe+575C6A: 45 3B C2              - cmp r8d,r10d
+Atelier_Ryza_2.exe+575C6D: 46 8D 0C 01           - lea r9d,[rcx+r8]
+Atelier_Ryza_2.exe+575C71: B9 09 00 00 00        - mov ecx,00000009
+Atelier_Ryza_2.exe+575C76: 41 0F 4C C1           - cmovl eax,r9d
+Atelier_Ryza_2.exe+575C7A: 89 05 88 E0 27 01     - mov [Atelier_Ryza_2.exe+17F3D08],eax
+Atelier_Ryza_2.exe+575C80: EB 0B                 - jmp Atelier_Ryza_2.exe+575C8D
+// ---------- INJECTING HERE ----------
+Atelier_Ryza_2.exe+575C82: 01 1D 80 E0 27 01     - add [Atelier_Ryza_2.exe+17F3D08],ebx
+// ---------- DONE INJECTING  ----------
+Atelier_Ryza_2.exe+575C88: B9 08 00 00 00        - mov ecx,00000008
+Atelier_Ryza_2.exe+575C8D: 45 33 C0              - xor r8d,r8d
+Atelier_Ryza_2.exe+575C90: E8 AB 48 FE FF        - call Atelier_Ryza_2.exe+55A540
+Atelier_Ryza_2.exe+575C95: 40 84 FF              - test dil,dil
+Atelier_Ryza_2.exe+575C98: 74 0A                 - je Atelier_Ryza_2.exe+575CA4
+Atelier_Ryza_2.exe+575C9A: B9 54 06 00 00        - mov ecx,00000654
+Atelier_Ryza_2.exe+575C9F: E8 8C EA D8 FF        - call Atelier_Ryza_2.exe+304730
+Atelier_Ryza_2.exe+575CA4: 8B 05 5E E0 27 01     - mov eax,[Atelier_Ryza_2.exe+17F3D08]
+Atelier_Ryza_2.exe+575CAA: 3D 3F 42 0F 00        - cmp eax,000F423F
+Atelier_Ryza_2.exe+575CAF: 7E 0C                 - jle Atelier_Ryza_2.exe+575CBD
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"gem pointer?"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Atelier_Ryza_2.exe+1769CB8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Atelier Ryza 2: Lost Legends &amp; the Secret Fairy
+  Version: 
+  Date   : 2023-09-13
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"Atelier_Ryza_2.exe"+574C66)
+define(bytes,89 05 4C 50 1F 01)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"Atelier_Ryza_2.exe"+574C66)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [Atelier_Ryza_2.exe+1769CB8],1869F
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [Atelier_Ryza_2.exe+1769CB8],eax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Atelier_Ryza_2.exe+574C66
+
+Atelier_Ryza_2.exe+574C40: 8B 05 72 50 1F 01              - mov eax,[Atelier_Ryza_2.exe+1769CB8]
+Atelier_Ryza_2.exe+574C46: 03 C1                          - add eax,ecx
+Atelier_Ryza_2.exe+574C48: 48 98                          - cdqe 
+Atelier_Ryza_2.exe+574C4A: 48 3D 7F 96 98 00              - cmp rax,0098967F
+Atelier_Ryza_2.exe+574C50: 7E 0B                          - jle Atelier_Ryza_2.exe+574C5D
+Atelier_Ryza_2.exe+574C52: C7 05 5C 50 1F 01 7F 96 98 00  - mov [Atelier_Ryza_2.exe+1769CB8],0098967F
+Atelier_Ryza_2.exe+574C5C: C3                             - ret 
+Atelier_Ryza_2.exe+574C5D: 33 C9                          - xor ecx,ecx
+Atelier_Ryza_2.exe+574C5F: 48 85 C0                       - test rax,rax
+Atelier_Ryza_2.exe+574C62: 48 0F 48 C1                    - cmovs rax,rcx
+// ---------- INJECTING HERE ----------
+Atelier_Ryza_2.exe+574C66: 89 05 4C 50 1F 01              - mov [Atelier_Ryza_2.exe+1769CB8],eax
+// ---------- DONE INJECTING  ----------
+Atelier_Ryza_2.exe+574C6C: C3                             - ret 
+Atelier_Ryza_2.exe+574C6D: CC                             - int 3 
+Atelier_Ryza_2.exe+574C6E: CC                             - int 3 
+Atelier_Ryza_2.exe+574C6F: CC                             - int 3 
+Atelier_Ryza_2.exe+574C70: 48 89 5C 24 08                 - mov [rsp+08],rbx
+Atelier_Ryza_2.exe+574C75: 57                             - push rdi
+Atelier_Ryza_2.exe+574C76: 48 83 EC 20                    - sub rsp,20
+Atelier_Ryza_2.exe+574C7A: 48 63 D9                       - movsxd  rbx,ecx
+Atelier_Ryza_2.exe+574C7D: 8B FA                          - mov edi,edx
+Atelier_Ryza_2.exe+574C7F: 8B CB                          - mov ecx,ebx
 }
 </AssemblerScript>
     </CheatEntry>
