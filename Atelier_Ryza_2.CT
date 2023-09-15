@@ -380,7 +380,7 @@ Atelier_Ryza_2.exe+575CAF: 7E 0C                 - jle Atelier_Ryza_2.exe+575CBD
     </CheatEntry>
     <CheatEntry>
       <ID>15</ID>
-      <Description>"gem 99999"</Description>
+      <Description>"gem 999999"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : Atelier Ryza 2: Lost Legends &amp; the Secret Fairy
   Version: 
@@ -404,7 +404,7 @@ label(return)
 newmem:
 
 code:
-  mov [Atelier_Ryza_2.exe+1769CB8],1869F
+  mov [Atelier_Ryza_2.exe+1769CB8],F423F
   jmp return
 
 address:
