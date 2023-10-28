@@ -550,7 +550,7 @@ label(return)
 newmem:
 
 code:
-  add [rbp+00000118],30//atk
+  add [rbp+00000118],b0//atk
   //add [rbp+0000011C],8f//def
   add [rbp+00000120],270F//spd
   mov rcx,rbp
