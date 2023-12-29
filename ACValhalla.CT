@@ -2,22 +2,8 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>0</ID>
-      <Description>"No description"</Description>
-      <LastState Value="120" RealAddress="1EC63D0FDB8"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1EC63D0FDB8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>1</ID>
-      <Description>"No description"</Description>
-      <LastState Value="120" RealAddress="1EC7DAD7170"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1EC7DAD7170</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>2</ID>
-      <Description>"Auto Assemble script"</Description>
+      <Description>"ammo"</Description>
       <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : ACValhalla.exe
@@ -42,7 +28,7 @@ label(return)
 newmem:
 
 code:
-  add r8d,f
+  add r8d,1
   mov [rbx],r8d
   jne ACValhalla.exe+2572CA8
   jmp return

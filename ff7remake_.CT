@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="974" RealAddress="1A509D808B0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1A509D808B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="974" RealAddress="1A64B2DFE10"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1A64B2DFE10</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : ff7remake_.exe
+  Version: 
+  Date   : 2023-12-29
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"ff7remake_.exe"+AFB738)
+define(bytes,89 7C 01 30 48 8B 5C 24 30)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"ff7remake_.exe"+AFB738)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+rax+30],edi
+  add [rcx+rax+30],fff
+  mov rbx,[rsp+30]
+  jmp return
+
+address:
+  jmp newmem
+  nop 4
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rcx+rax+30],edi
+  // mov rbx,[rsp+30]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ff7remake_.exe+AFB738
+
+ff7remake_.exe+AFB709: E8 F2 AB 02 00        - call ff7remake_.exe+B26300
+ff7remake_.exe+AFB70E: 48 89 05 53 DB CB 04  - mov [ff7remake_.exe+57B9268],rax
+ff7remake_.exe+AFB715: 48 8B 80 80 6D 0B 00  - mov rax,[rax+000B6D80]
+ff7remake_.exe+AFB71C: 80 FB 08              - cmp bl,08
+ff7remake_.exe+AFB71F: 73 1B                 - jae ff7remake_.exe+AFB73C
+ff7remake_.exe+AFB721: F6 05 38 DB CB 04 10  - test byte ptr [ff7remake_.exe+57B9260],10
+ff7remake_.exe+AFB728: 77 12                 - ja ff7remake_.exe+AFB73C
+ff7remake_.exe+AFB72A: 48 8B 80 60 3E 00 00  - mov rax,[rax+00003E60]
+ff7remake_.exe+AFB731: 0F B6 CB              - movzx ecx,bl
+ff7remake_.exe+AFB734: 48 C1 E1 06           - shl rcx,06
+// ---------- INJECTING HERE ----------
+ff7remake_.exe+AFB738: 89 7C 01 30           - mov [rcx+rax+30],edi
+// ---------- DONE INJECTING  ----------
+ff7remake_.exe+AFB73C: 48 8B 5C 24 30        - mov rbx,[rsp+30]
+ff7remake_.exe+AFB741: 48 83 C4 20           - add rsp,20
+ff7remake_.exe+AFB745: 5F                    - pop rdi
+ff7remake_.exe+AFB746: C3                    - ret 
+ff7remake_.exe+AFB747: CC                    - int 3 
+ff7remake_.exe+AFB748: CC                    - int 3 
+ff7remake_.exe+AFB749: CC                    - int 3 
+ff7remake_.exe+AFB74A: CC                    - int 3 
+ff7remake_.exe+AFB74B: CC                    - int 3 
+ff7remake_.exe+AFB74C: CC                    - int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
