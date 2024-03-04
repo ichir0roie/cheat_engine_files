@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>3</ID>
       <Description>"item"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -79,7 +79,7 @@ gamedll_ph_x64_rwdi.dll+662466: 66 00 00                 - add [rax],al
     <CheatEntry>
       <ID>7</ID>
       <Description>"skip stamina"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -144,6 +144,81 @@ gamedll_ph_x64_rwdi.dll+BD8431: 48 8B C8              - mov rcx,rax
 gamedll_ph_x64_rwdi.dll+BD8434: 48 8B 10              - mov rdx,[rax]
 gamedll_ph_x64_rwdi.dll+BD8437: FF 92 90 03 00 00     - call qword ptr [rdx+00000390]
 gamedll_ph_x64_rwdi.dll+BD843D: 84 C0                 - test al,al
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"exp"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
+  Version: 
+  Date   : 2024-03-05
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"gamedll_ph_x64_rwdi.dll"+1342C26)
+define(bytes,48 89 41 18 E8 B1 11 05 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"gamedll_ph_x64_rwdi.dll"+1342C26)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add rax,ffff
+  mov [rcx+18],rax
+  call gamedll_ph_x64_rwdi.dll+1393DE0
+  jmp return
+
+address:
+  jmp newmem
+  nop 4
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rcx+18],rax
+  // call gamedll_ph_x64_rwdi.dll+1393DE0
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: gamedll_ph_x64_rwdi.dll+1342C26
+
+gamedll_ph_x64_rwdi.dll+1342BFF: 4C 89 AC 24 A0 00 00 00        - mov [rsp+000000A0],r13
+gamedll_ph_x64_rwdi.dll+1342C07: 4C 89 74 24 60                 - mov [rsp+60],r14
+gamedll_ph_x64_rwdi.dll+1342C0C: 4C 3B F8                       - cmp r15,rax
+gamedll_ph_x64_rwdi.dll+1342C0F: 77 06                          - ja gamedll_ph_x64_rwdi.dll+1342C17
+gamedll_ph_x64_rwdi.dll+1342C11: 49 8D 04 17                    - lea rax,[r15+rdx]
+gamedll_ph_x64_rwdi.dll+1342C15: EB 0D                          - jmp gamedll_ph_x64_rwdi.dll+1342C24
+gamedll_ph_x64_rwdi.dll+1342C17: 49 8B EF                       - mov rbp,r15
+gamedll_ph_x64_rwdi.dll+1342C1A: 48 C7 C0 FF FF FF FF           - mov rax,FFFFFFFFFFFFFFFF
+gamedll_ph_x64_rwdi.dll+1342C21: 48 F7 D5                       - not rbp
+gamedll_ph_x64_rwdi.dll+1342C24: 33 D2                          - xor edx,edx
+// ---------- INJECTING HERE ----------
+gamedll_ph_x64_rwdi.dll+1342C26: 48 89 41 18                    - mov [rcx+18],rax
+// ---------- DONE INJECTING  ----------
+gamedll_ph_x64_rwdi.dll+1342C2A: E8 B1 11 05 00                 - call gamedll_ph_x64_rwdi.dll+1393DE0
+gamedll_ph_x64_rwdi.dll+1342C2F: 4C 8D 25 02 10 4C 01           - lea r12,[gamedll_ph_x64_rwdi.dll+2803C38]
+gamedll_ph_x64_rwdi.dll+1342C36: 8B F0                          - mov esi,eax
+gamedll_ph_x64_rwdi.dll+1342C38: 41 BD F8 FF FF FF              - mov r13d,FFFFFFF8
+gamedll_ph_x64_rwdi.dll+1342C3E: 49 BE FF FF FF FF FF FF FF 1F  - mov r14,1FFFFFFFFFFFFFFF
+gamedll_ph_x64_rwdi.dll+1342C48: 3B 47 0C                       - cmp eax,[rdi+0C]
+gamedll_ph_x64_rwdi.dll+1342C4B: 0F 84 8D 00 00 00              - je gamedll_ph_x64_rwdi.dll+1342CDE
+gamedll_ph_x64_rwdi.dll+1342C51: 8B D0                          - mov edx,eax
+gamedll_ph_x64_rwdi.dll+1342C53: 48 8B CF                       - mov rcx,rdi
+gamedll_ph_x64_rwdi.dll+1342C56: E8 75 23 06 00                 - call gamedll_ph_x64_rwdi.dll+13A4FD0
 }
 </AssemblerScript>
     </CheatEntry>
