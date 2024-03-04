@@ -550,8 +550,8 @@ label(return)
 newmem:
 
 code:
-  add [rbp+00000118],b0//atk
-  //add [rbp+0000011C],8f//def
+  add [rbp+00000118],270f//atk
+  add [rbp+0000011C],270f//def
   add [rbp+00000120],270F//spd
   mov rcx,rbp
   call Atelier_Ryza_3.exe+9EEF30
