@@ -79,7 +79,7 @@ gamedll_ph_x64_rwdi.dll+1342C56: E8 75 23 06 00                 - call gamedll_p
     <CheatEntry>
       <ID>16</ID>
       <Description>"gun ammo"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -224,7 +224,7 @@ gamedll_ph_x64_rwdi.dll+BD843D: 84 C0                 - test al,al
     <CheatEntry>
       <ID>23</ID>
       <Description>"weapon"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -295,13 +295,6 @@ gamedll_ph_x64_rwdi.dll+11C4BBC: 0F 28 DE                 - movaps xmm3,xmm6
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>28</ID>
-      <Description>"No description"</Description>
-      <LastState Value="255" RealAddress="227D6EFA080"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>227D6EFA080</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>29</ID>
       <Description>"item"</Description>
       <LastState Activated="1"/>
@@ -328,7 +321,7 @@ label(return)
 newmem:
 
 code:
-  mov esi,fff
+  add esi,1
   mov [rbx],esi
   mov rbx,[rsp+30]
   jmp return
