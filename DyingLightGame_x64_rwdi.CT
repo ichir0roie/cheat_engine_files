@@ -2,7 +2,7 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>3</ID>
+      <ID>13</ID>
       <Description>"item"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -28,7 +28,7 @@ label(return)
 newmem:
 
 code:
-  add esi,f
+  mov esi,63
   mov [rbx],esi
   mov rbx,[rsp+30]
   jmp return
@@ -77,7 +77,7 @@ gamedll_ph_x64_rwdi.dll+662466: 66 00 00                 - add [rax],al
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>7</ID>
+      <ID>14</ID>
       <Description>"skip stamina"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -148,7 +148,7 @@ gamedll_ph_x64_rwdi.dll+BD843D: 84 C0                 - test al,al
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>9</ID>
+      <ID>15</ID>
       <Description>"exp"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -174,7 +174,7 @@ label(return)
 newmem:
 
 code:
-  add rax,ffff
+  add rax,fffff
   mov [rcx+18],rax
   call gamedll_ph_x64_rwdi.dll+1393DE0
   jmp return
@@ -219,6 +219,80 @@ gamedll_ph_x64_rwdi.dll+1342C4B: 0F 84 8D 00 00 00              - je gamedll_ph_
 gamedll_ph_x64_rwdi.dll+1342C51: 8B D0                          - mov edx,eax
 gamedll_ph_x64_rwdi.dll+1342C53: 48 8B CF                       - mov rcx,rdi
 gamedll_ph_x64_rwdi.dll+1342C56: E8 75 23 06 00                 - call gamedll_ph_x64_rwdi.dll+13A4FD0
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"gun ammo"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
+  Version: 
+  Date   : 2024-03-09
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"gamedll_ph_x64_rwdi.dll"+6623E5)
+define(bytes,89 03 48 8D 4B 30)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"gamedll_ph_x64_rwdi.dll"+6623E5)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [rbx],eax
+  lea rcx,[rbx+30]
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rbx],eax
+  // lea rcx,[rbx+30]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: gamedll_ph_x64_rwdi.dll+6623E5
+
+gamedll_ph_x64_rwdi.dll+6623C0: FF 90 20 0E 00 00        - call qword ptr [rax+00000E20]
+gamedll_ph_x64_rwdi.dll+6623C6: 48 85 C0                 - test rax,rax
+gamedll_ph_x64_rwdi.dll+6623C9: 74 7B                    - je gamedll_ph_x64_rwdi.dll+662446
+gamedll_ph_x64_rwdi.dll+6623CB: 48 8B 43 30              - mov rax,[rbx+30]
+gamedll_ph_x64_rwdi.dll+6623CF: 48 8D 4B 30              - lea rcx,[rbx+30]
+gamedll_ph_x64_rwdi.dll+6623D3: FF 90 A8 03 00 00        - call qword ptr [rax+000003A8]
+gamedll_ph_x64_rwdi.dll+6623D9: 33 D2                    - xor edx,edx
+gamedll_ph_x64_rwdi.dll+6623DB: 8B CE                    - mov ecx,esi
+gamedll_ph_x64_rwdi.dll+6623DD: 44 8B C0                 - mov r8d,eax
+gamedll_ph_x64_rwdi.dll+6623E0: E8 7B 8B 25 01           - call gamedll_ph_x64_rwdi.dll+18BAF60
+// ---------- INJECTING HERE ----------
+gamedll_ph_x64_rwdi.dll+6623E5: 89 03                    - mov [rbx],eax
+// ---------- DONE INJECTING  ----------
+gamedll_ph_x64_rwdi.dll+6623E7: 48 8D 4B 30              - lea rcx,[rbx+30]
+gamedll_ph_x64_rwdi.dll+6623EB: 48 8B 43 30              - mov rax,[rbx+30]
+gamedll_ph_x64_rwdi.dll+6623EF: FF 90 68 02 00 00        - call qword ptr [rax+00000268]
+gamedll_ph_x64_rwdi.dll+6623F5: 83 C0 E9                 - add eax,-17
+gamedll_ph_x64_rwdi.dll+6623F8: 83 F8 13                 - cmp eax,13
+gamedll_ph_x64_rwdi.dll+6623FB: 77 4B                    - ja gamedll_ph_x64_rwdi.dll+662448
+gamedll_ph_x64_rwdi.dll+6623FD: 48 8D 0D FC DB 99 FF     - lea rcx,[gamedll_ph_x64_rwdi.dll]
+gamedll_ph_x64_rwdi.dll+662404: 48 98                    - cdqe 
+gamedll_ph_x64_rwdi.dll+662406: 0F B6 84 01 68 24 66 00  - movzx eax,byte ptr [rcx+rax+00662468]
+gamedll_ph_x64_rwdi.dll+66240E: 8B 94 81 60 24 66 00     - mov edx,[rcx+rax*4+00662460]
 }
 </AssemblerScript>
     </CheatEntry>
