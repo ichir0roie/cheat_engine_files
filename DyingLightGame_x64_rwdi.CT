@@ -4,7 +4,6 @@
     <CheatEntry>
       <ID>15</ID>
       <Description>"exp"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -79,7 +78,6 @@ gamedll_ph_x64_rwdi.dll+1342C56: E8 75 23 06 00                 - call gamedll_p
     <CheatEntry>
       <ID>14</ID>
       <Description>"skip stamina"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -150,7 +148,6 @@ gamedll_ph_x64_rwdi.dll+BD843D: 84 C0                 - test al,al
     <CheatEntry>
       <ID>23</ID>
       <Description>"weapon"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -223,7 +220,6 @@ gamedll_ph_x64_rwdi.dll+11C4BBC: 0F 28 DE                 - movaps xmm3,xmm6
     <CheatEntry>
       <ID>16</ID>
       <Description>"gun ammo"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -297,7 +293,6 @@ gamedll_ph_x64_rwdi.dll+66240E: 8B 94 81 60 24 66 00     - mov edx,[rcx+rax*4+00
     <CheatEntry>
       <ID>30</ID>
       <Description>"bowgun"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -371,13 +366,11 @@ gamedll_ph_x64_rwdi.dll+66240E: 8B 94 81 60 24 66 00     - mov edx,[rcx+rax*4+00
     <CheatEntry>
       <ID>1318</ID>
       <Description>"from_other_site"</Description>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>1317</ID>
           <Description>"[1.14] Free crafting (best toggle when needed - swap page if values do not show as 0)"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 1.14
@@ -464,7 +457,6 @@ gamedll_ph_x64_rwdi.dll+67EFAA: 74 1E                          - je gamedll_ph_x
         <CheatEntry>
           <ID>1315</ID>
           <Description>"[1.14] Unlimited consumables [freezes each one you use at 15]"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 
@@ -560,7 +552,6 @@ gamedll_ph_x64_rwdi.dll.text+5C9D89: 74 7B              - je gamedll_ph_x64_rwdi
         <CheatEntry>
           <ID>1316</ID>
           <Description>"[Cheat][1.14] Unlimited Special Arrows (infinite below is only normal ones)"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 1.11.4
@@ -612,7 +603,6 @@ gamedll_ph_x64_rwdi.dll+8E046D: E9 61 FF FF FF  - jmp gamedll_ph_x64_rwdi.dll+8E
         <CheatEntry>
           <ID>18</ID>
           <Description>"[Cheat][1.14] Unlimited Accessories (Toggle when needed) (Bound: MouseButton4)"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : DyingLightGame_x64_rwdi.exe
   Version: 1.11.4.0
