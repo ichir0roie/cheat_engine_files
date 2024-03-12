@@ -220,6 +220,78 @@ MonsterHunterWorld.exe+11CDD64: CC           - int 3
 }
 </AssemblerScript>
     </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"money"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MonsterHunterWorld.exe
+  Version: 
+  Date   : 2024-03-13
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"MonsterHunterWorld.exe"+1348D16)
+define(bytes,89 8F 94 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000,"MonsterHunterWorld.exe"+1348D16)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rdi+00000094],5F5E0FF
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rdi+00000094],ecx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: MonsterHunterWorld.exe+1348D16
+
+MonsterHunterWorld.exe+1348CE6: 39 87 94 00 00 00              - cmp [rdi+00000094],eax
+MonsterHunterWorld.exe+1348CEC: 7D 0C                          - jnl MonsterHunterWorld.exe+1348CFA
+MonsterHunterWorld.exe+1348CEE: C7 87 94 00 00 00 00 00 00 00  - mov [rdi+00000094],00000000
+MonsterHunterWorld.exe+1348CF8: EB 37                          - jmp MonsterHunterWorld.exe+1348D31
+MonsterHunterWorld.exe+1348CFA: 8B 8F 94 00 00 00              - mov ecx,[rdi+00000094]
+MonsterHunterWorld.exe+1348D00: 03 CE                          - add ecx,esi
+MonsterHunterWorld.exe+1348D02: 81 F9 FF E0 F5 05              - cmp ecx,05F5E0FF
+MonsterHunterWorld.exe+1348D08: 76 0C                          - jna MonsterHunterWorld.exe+1348D16
+MonsterHunterWorld.exe+1348D0A: C7 87 94 00 00 00 FF E0 F5 05  - mov [rdi+00000094],05F5E0FF
+MonsterHunterWorld.exe+1348D14: EB 0E                          - jmp MonsterHunterWorld.exe+1348D24
+// ---------- INJECTING HERE ----------
+MonsterHunterWorld.exe+1348D16: 89 8F 94 00 00 00              - mov [rdi+00000094],ecx
+// ---------- DONE INJECTING  ----------
+MonsterHunterWorld.exe+1348D1C: 81 F9 40 42 0F 00              - cmp ecx,000F4240
+MonsterHunterWorld.exe+1348D22: 72 0D                          - jb MonsterHunterWorld.exe+1348D31
+MonsterHunterWorld.exe+1348D24: BA 18 00 00 00                 - mov edx,00000018
+MonsterHunterWorld.exe+1348D29: 48 8B CF                       - mov rcx,rdi
+MonsterHunterWorld.exe+1348D2C: E8 5F E1 01 00                 - call MonsterHunterWorld.exe+1366E90
+MonsterHunterWorld.exe+1348D31: 48 8D 4F 08                    - lea rcx,[rdi+08]
+MonsterHunterWorld.exe+1348D35: 48 8B 5C 24 30                 - mov rbx,[rsp+30]
+MonsterHunterWorld.exe+1348D3A: 48 8B 74 24 38                 - mov rsi,[rsp+38]
+MonsterHunterWorld.exe+1348D3F: 48 83 C4 20                    - add rsp,20
+MonsterHunterWorld.exe+1348D43: 5F                             - pop rdi
+}
+</AssemblerScript>
+    </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
   <DisassemblerComments>
