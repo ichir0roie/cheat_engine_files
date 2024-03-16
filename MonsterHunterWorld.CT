@@ -378,7 +378,7 @@ MonsterHunterWorld.exe+12FD2A7: 48 8B C8              - mov rcx,rax
     <CheatEntry>
       <ID>20</ID>
       <Description>"razor"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -450,7 +450,7 @@ MonsterHunterWorld.exe+2116DE9: 0F 84 E9 00 00 00     - je MonsterHunterWorld.ex
     <CheatEntry>
       <ID>18</ID>
       <Description>"gunlance ammo 1"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -522,7 +522,7 @@ MonsterHunterWorld.exe+212DEE4: EB 02                 - jmp MonsterHunterWorld.e
     <CheatEntry>
       <ID>24</ID>
       <Description>"gunlance ammo 2"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
