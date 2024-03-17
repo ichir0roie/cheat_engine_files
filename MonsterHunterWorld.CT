@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>2</ID>
       <Description>"item"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -23,7 +23,7 @@ define(bytes,89 51 0C 85 D2 75 09 41 80 F8 01 75 03 89 51 08)
  
  
 assert(address,bytes)
-alloc(newmem,$1000)
+alloc(newmem,$100)
 
 label(code)
 label(return)
@@ -89,7 +89,7 @@ MonsterHunterWorld.exe+11CDD64: CC           - int 3
     <CheatEntry>
       <ID>7</ID>
       <Description>"ammo"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -105,7 +105,7 @@ define(bytes,89 41 08 8B C2 C3 C7 41 08 00 00 00 00 41 8B C0)
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000)
+alloc(newmem,$100)
 
 label(code)
 label(return)
@@ -169,7 +169,7 @@ MonsterHunterWorld.exe+26E160: 48 83 EC 48           - sub rsp,48
     <CheatEntry>
       <ID>11</ID>
       <Description>"machine gun"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -185,7 +185,7 @@ define(bytes,F3 0F 11 91 58 23 00 00)
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+214DC82)
+alloc(newmem,$100,"MonsterHunterWorld.exe"+214DC82)
 
 label(code)
 label(return)
@@ -242,7 +242,7 @@ MonsterHunterWorld.exe+214DC9D: CC                             - int 3
     <CheatEntry>
       <ID>12</ID>
       <Description>"stamina"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -258,7 +258,7 @@ define(bytes,F3 0F 11 41 6C)
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+12FD27A)
+alloc(newmem,$100,"MonsterHunterWorld.exe"+12FD27A)
 
 label(code)
 label(return)
@@ -314,7 +314,7 @@ MonsterHunterWorld.exe+12FD2A7: 48 8B C8              - mov rcx,rax
     <CheatEntry>
       <ID>14</ID>
       <Description>"money"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -330,7 +330,7 @@ define(bytes,89 8F 94 00 00 00 81 F9 40 42 0F 00 72 0D)
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000)
+alloc(newmem,$100)
 
 label(code)
 label(return)
@@ -390,7 +390,7 @@ MonsterHunterWorld.exe+1348D43: 5F                             - pop rdi
     <CheatEntry>
       <ID>17</ID>
       <Description>"infinite cannon"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -406,7 +406,7 @@ define(bytes,01 91 B8 0F 00 00)
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+100DFC6)
+alloc(newmem,$100,"MonsterHunterWorld.exe"+100DFC6)
 
 label(code)
 label(return)
@@ -462,7 +462,7 @@ MonsterHunterWorld.exe+100DFF5: 89 83 B8 0F 00 00     - mov [rbx+00000FB8],eax
     <CheatEntry>
       <ID>22</ID>
       <Description>"heavy sniper inf"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -478,7 +478,7 @@ define(bytes,F3 0F 11 83 60 23 00 00)
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$1000,"MonsterHunterWorld.exe"+214D168)
+alloc(newmem,$100,"MonsterHunterWorld.exe"+214D168)
 
 label(code)
 label(return)
