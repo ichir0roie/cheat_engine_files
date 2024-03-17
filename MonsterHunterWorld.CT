@@ -193,7 +193,8 @@ label(return)
 newmem:
 
 code:
-  //movss [rcx+00002358],xmm2
+  movss [rcx+00002358],xmm2
+  mov [rcx+00002358],42480000
   jmp return
 
 address:
@@ -265,7 +266,8 @@ label(return)
 newmem:
 
 code:
-  //movss [rcx+6C],xmm0
+  movss [rcx+6C],xmm0
+  mov [rcx+6C],42c80000
   jmp return
 
 address:
@@ -312,7 +314,7 @@ MonsterHunterWorld.exe+12FD2A7: 48 8B C8              - mov rcx,rax
     <CheatEntry>
       <ID>14</ID>
       <Description>"money"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -336,7 +338,7 @@ label(return)
 newmem:
 
 code:
-  //mov [rdi+00000094],ecx
+  mov [rdi+00000094],ecx
   mov [rdi+00000094],05F5E0FF
   cmp ecx,000F4240
   jb MonsterHunterWorld.exe+1348D31
