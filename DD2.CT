@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>1</ID>
       <Description>"stamina"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DD2.exe
   Version: 
@@ -109,7 +109,7 @@ label(return)
 newmem:
 
 code:
-  mov [r14+00000298],ffff
+  mov [r14+00000298],fffff
   test r15,r15
   je DD2.exe+3D56239
   mov rdx,r15
@@ -187,7 +187,7 @@ label(return)
 newmem:
 
 code:
-  mov [rbx+30],ffff
+  add [rbx+30],ff
   mov rax,[rax+70]
   mov rcx,[rax+10]
   mov r8d,[rcx+10]
@@ -239,25 +239,25 @@ DD2.exe+331CB7: 48 8B D7                       - mov rdx,rdi
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>8</ID>
-      <Description>"max_hp"</Description>
-      <LastState/>
+      <ID>11</ID>
+      <Description>"add jp"</Description>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : DD2.exe
   Version: 
-  Date   : 2024-03-24
+  Date   : 2024-03-25
   Author : ichir
 
   This script does blah blah blah
 }
 
-define(address,"DD2.exe"+164B8B9)
-define(bytes,89 83 34 01 00 00 E8 5C F2 FC FF 0F 57 C9)
+define(address,"DD2.exe"+E996A9)
+define(bytes,44 01 4C 81 20 44 01 4A 30 C3 CC CC CC CC)
 
 [ENABLE]
 
 assert(address,bytes)
-alloc(newmem,$10)
+alloc(newmem,$1000)
 
 label(code)
 label(return)
@@ -265,9 +265,15 @@ label(return)
 newmem:
 
 code:
-  //mov [r14+00000298],ecx
-  call DD2.exe+161AB20
-  xorps xmm1,xmm1
+  //add [rcx+rax*4+20],r9d
+  //add [rdx+30],r9d
+  add [rcx+rax*4+20],fff
+  add [rdx+30],fff
+  ret 
+  int 3 
+  int 3 
+  int 3 
+  int 3 
   jmp return
 
 address:
@@ -278,38 +284,42 @@ return:
 
 address:
   db bytes
-  // mov [rbx+00000134],eax
-  // call DD2.exe+161AB20
-  // xorps xmm1,xmm1
+  // add [rcx+rax*4+20],r9d
+  // add [rdx+30],r9d
+  // ret 
+  // int 3 
+  // int 3 
+  // int 3 
+  // int 3 
 
 dealloc(newmem)
 
 {
-// ORIGINAL CODE - INJECTION POINT: DD2.exe+164B8B9
+// ORIGINAL CODE - INJECTION POINT: DD2.exe+E996A9
 
-DD2.exe+164B897: 76 07              - jna DD2.exe+164B8A0
-DD2.exe+164B899: 48 8D 44 24 60     - lea rax,[rsp+60]
-DD2.exe+164B89E: EB 11              - jmp DD2.exe+164B8B1
-DD2.exe+164B8A0: 0F 2F C7           - comiss xmm0,xmm7
-DD2.exe+164B8A3: 48 8D 44 24 58     - lea rax,[rsp+58]
-DD2.exe+164B8A8: 48 8D 4C 24 68     - lea rcx,[rsp+68]
-DD2.exe+164B8AD: 48 0F 46 C1        - cmovbe rax,rcx
-DD2.exe+164B8B1: 8B 00              - mov eax,[rax]
-DD2.exe+164B8B3: 48 8B D3           - mov rdx,rbx
-DD2.exe+164B8B6: 48 8B CF           - mov rcx,rdi
+DD2.exe+E9968C: 41 83 E8 01     - sub r8d,01
+DD2.exe+E99690: 79 0E           - jns DD2.exe+E996A0
+DD2.exe+E99692: 33 C0           - xor eax,eax
+DD2.exe+E99694: 48 98           - cdqe 
+DD2.exe+E99696: 44 01 4C 81 20  - add [rcx+rax*4+20],r9d
+DD2.exe+E9969B: 44 01 4A 30     - add [rdx+30],r9d
+DD2.exe+E9969F: C3              - ret 
+DD2.exe+E996A0: 44 3B C0        - cmp r8d,eax
+DD2.exe+E996A3: 41 0F 4C C0     - cmovl eax,r8d
+DD2.exe+E996A7: 48 98           - cdqe 
 // ---------- INJECTING HERE ----------
-DD2.exe+164B8B9: 89 83 34 01 00 00  - mov [rbx+00000134],eax
+DD2.exe+E996A9: 44 01 4C 81 20  - add [rcx+rax*4+20],r9d
 // ---------- DONE INJECTING  ----------
-DD2.exe+164B8BF: E8 5C F2 FC FF     - call DD2.exe+161AB20
-DD2.exe+164B8C4: 0F 57 C9           - xorps xmm1,xmm1
-DD2.exe+164B8C7: 45 33 C9           - xor r9d,r9d
-DD2.exe+164B8CA: F3 0F 5A C8        - cvtss2sd xmm1,xmm0
-DD2.exe+164B8CE: 48 8B D3           - mov rdx,rbx
-DD2.exe+164B8D1: 48 8B CF           - mov rcx,rdi
-DD2.exe+164B8D4: 66 0F 5A D1        - cvtpd2ps xmm2,xmm1
-DD2.exe+164B8D8: 48 8B 5C 24 50     - mov rbx,[rsp+50]
-DD2.exe+164B8DD: 0F 28 74 24 30     - movaps xmm6,[rsp+30]
-DD2.exe+164B8E2: 0F 28 7C 24 20     - movaps xmm7,[rsp+20]
+DD2.exe+E996AE: 44 01 4A 30     - add [rdx+30],r9d
+DD2.exe+E996B2: C3              - ret 
+DD2.exe+E996B3: CC              - int 3 
+DD2.exe+E996B4: CC              - int 3 
+DD2.exe+E996B5: CC              - int 3 
+DD2.exe+E996B6: CC              - int 3 
+DD2.exe+E996B7: CC              - int 3 
+DD2.exe+E996B8: CC              - int 3 
+DD2.exe+E996B9: CC              - int 3 
+DD2.exe+E996BA: CC              - int 3 
 }
 </AssemblerScript>
     </CheatEntry>
@@ -341,7 +351,7 @@ newmem:
 
 code:
   //add [r12+24],ecx
-  add [r12+24],ffff
+  add [r12+24],fffff
   mov rcx,rbp
   mov r9d,[rdi+18]
   mov edx,[rsp+000000B0]
@@ -389,6 +399,160 @@ DD2.exe+4DC0AF: 44 8B 8C 24 B8 00 00 00  - mov r9d,[rsp+000000B8]
 DD2.exe+4DC0B7: 4C 8B C7                 - mov r8,rdi
 DD2.exe+4DC0BA: 8B 94 24 B0 00 00 00     - mov edx,[rsp+000000B0]
 DD2.exe+4DC0C1: 48 8B CD                 - mov rcx,rbp
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"level"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : DD2.exe
+  Version: 
+  Date   : 2024-03-24
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"DD2.exe"+234BD0D)
+define(bytes,89 73 20 E8 6B D7 64 01 48 8B 43 18 48 85 C0)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$10)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [rbx+20],esi
+  mov [rbx+20],1
+  call DD2.exe+3999480
+  mov rax,[rbx+18]
+  test rax,rax
+  jmp return
+
+address:
+  jmp far newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rbx+20],esi
+  // call DD2.exe+3999480
+  // mov rax,[rbx+18]
+  // test rax,rax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DD2.exe+234BD0D
+
+DD2.exe+234BCE3: C6 44 24 30 01                 - mov byte ptr [rsp+30],01
+DD2.exe+234BCE8: F3 0F 11 44 24 28              - movss [rsp+28],xmm0
+DD2.exe+234BCEE: 89 44 24 20                    - mov [rsp+20],eax
+DD2.exe+234BCF2: E8 F9 B4 4B 01                 - call DD2.exe+38071F0
+DD2.exe+234BCF7: 48 85 C0                       - test rax,rax
+DD2.exe+234BCFA: 0F 84 4A 01 00 00              - je DD2.exe+234BE4A
+DD2.exe+234BD00: 48 8B 53 28                    - mov rdx,[rbx+28]
+DD2.exe+234BD04: 4C 8B C0                       - mov r8,rax
+DD2.exe+234BD07: 29 6B 24                       - sub [rbx+24],ebp
+DD2.exe+234BD0A: 48 8B CF                       - mov rcx,rdi
+// ---------- INJECTING HERE ----------
+DD2.exe+234BD0D: 89 73 20                       - mov [rbx+20],esi
+// ---------- DONE INJECTING  ----------
+DD2.exe+234BD10: E8 6B D7 64 01                 - call DD2.exe+3999480
+DD2.exe+234BD15: 48 8B 43 18                    - mov rax,[rbx+18]
+DD2.exe+234BD19: 48 85 C0                       - test rax,rax
+DD2.exe+234BD1C: 0F 84 28 01 00 00              - je DD2.exe+234BE4A
+DD2.exe+234BD22: 48 8B 40 10                    - mov rax,[rax+10]
+DD2.exe+234BD26: 48 BD FF FF FF FF FF FF FF 7F  - mov rbp,7FFFFFFFFFFFFFFF
+DD2.exe+234BD30: 0F 10 05 F1 C1 A3 0D           - movups xmm0,[DD2.exe+FD87F28]
+DD2.exe+234BD37: 48 8B 70 10                    - mov rsi,[rax+10]
+DD2.exe+234BD3B: 48 8D 44 24 40                 - lea rax,[rsp+40]
+DD2.exe+234BD40: 0F 29 44 24 40                 - movaps [rsp+40],xmm0
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"max_hp"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : DD2.exe
+  Version: 
+  Date   : 2024-03-24
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"DD2.exe"+164B8B9)
+define(bytes,89 83 34 01 00 00 E8 5C F2 FC FF 0F 57 C9)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$10)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [r14+00000298],ecx
+  call DD2.exe+161AB20
+  xorps xmm1,xmm1
+  jmp return
+
+address:
+  jmp far newmem
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rbx+00000134],eax
+  // call DD2.exe+161AB20
+  // xorps xmm1,xmm1
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DD2.exe+164B8B9
+
+DD2.exe+164B897: 76 07              - jna DD2.exe+164B8A0
+DD2.exe+164B899: 48 8D 44 24 60     - lea rax,[rsp+60]
+DD2.exe+164B89E: EB 11              - jmp DD2.exe+164B8B1
+DD2.exe+164B8A0: 0F 2F C7           - comiss xmm0,xmm7
+DD2.exe+164B8A3: 48 8D 44 24 58     - lea rax,[rsp+58]
+DD2.exe+164B8A8: 48 8D 4C 24 68     - lea rcx,[rsp+68]
+DD2.exe+164B8AD: 48 0F 46 C1        - cmovbe rax,rcx
+DD2.exe+164B8B1: 8B 00              - mov eax,[rax]
+DD2.exe+164B8B3: 48 8B D3           - mov rdx,rbx
+DD2.exe+164B8B6: 48 8B CF           - mov rcx,rdi
+// ---------- INJECTING HERE ----------
+DD2.exe+164B8B9: 89 83 34 01 00 00  - mov [rbx+00000134],eax
+// ---------- DONE INJECTING  ----------
+DD2.exe+164B8BF: E8 5C F2 FC FF     - call DD2.exe+161AB20
+DD2.exe+164B8C4: 0F 57 C9           - xorps xmm1,xmm1
+DD2.exe+164B8C7: 45 33 C9           - xor r9d,r9d
+DD2.exe+164B8CA: F3 0F 5A C8        - cvtss2sd xmm1,xmm0
+DD2.exe+164B8CE: 48 8B D3           - mov rdx,rbx
+DD2.exe+164B8D1: 48 8B CF           - mov rcx,rdi
+DD2.exe+164B8D4: 66 0F 5A D1        - cvtpd2ps xmm2,xmm1
+DD2.exe+164B8D8: 48 8B 5C 24 50     - mov rbx,[rsp+50]
+DD2.exe+164B8DD: 0F 28 74 24 30     - movaps xmm6,[rsp+30]
+DD2.exe+164B8E2: 0F 28 7C 24 20     - movaps xmm7,[rsp+20]
 }
 </AssemblerScript>
     </CheatEntry>
