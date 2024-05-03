@@ -4,7 +4,6 @@
     <CheatEntry>
       <ID>2</ID>
       <Description>"item"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -89,7 +88,6 @@ MonsterHunterWorld.exe+11CDD64: CC           - int 3
     <CheatEntry>
       <ID>11</ID>
       <Description>"machine gun"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -162,7 +160,6 @@ MonsterHunterWorld.exe+214DC9D: CC                             - int 3
     <CheatEntry>
       <ID>12</ID>
       <Description>"stamina"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -234,7 +231,6 @@ MonsterHunterWorld.exe+12FD2A7: 48 8B C8              - mov rcx,rax
     <CheatEntry>
       <ID>14</ID>
       <Description>"money"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -310,7 +306,6 @@ MonsterHunterWorld.exe+1348D43: 5F                             - pop rdi
     <CheatEntry>
       <ID>17</ID>
       <Description>"infinite cannon"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -382,7 +377,6 @@ MonsterHunterWorld.exe+100DFF5: 89 83 B8 0F 00 00     - mov [rbx+00000FB8],eax
     <CheatEntry>
       <ID>22</ID>
       <Description>"heavy sniper inf"</Description>
-      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : MonsterHunterWorld.exe
   Version: 
@@ -449,6 +443,87 @@ MonsterHunterWorld.exe+214D18F: 0F B6 87 38 0B 00 00     - movzx eax,byte ptr [r
 MonsterHunterWorld.exe+214D196: 39 83 5C 23 00 00        - cmp [rbx+0000235C],eax
 MonsterHunterWorld.exe+214D19C: 7E 12                    - jle MonsterHunterWorld.exe+214D1B0
 MonsterHunterWorld.exe+214D19E: 89 83 5C 23 00 00        - mov [rbx+0000235C],eax
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"ammo"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MONSTER HUNTER: WORLD(421652)
+  Version: 
+  Date   : 2024-04-28
+  Author : ichir
+
+  This script does blah blah blah
+}
+
+define(address,"MonsterHunterWorld.exe"+26E14B)
+define(bytes,89 41 08 8B C2 C3 C7 41 08 00 00 00 00 41 8B C0)
+
+[ENABLE]
+
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add eax,1
+  mov [rcx+08],eax
+  mov eax,edx
+  ret 
+  mov [rcx+08],00000000
+  mov eax,r8d
+  jmp return
+
+address:
+  jmp far newmem
+  nop 2
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [rcx+08],eax
+  // mov eax,edx
+  // ret 
+  // mov [rcx+08],00000000
+  // mov eax,r8d
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: MonsterHunterWorld.exe+26E14B
+
+MonsterHunterWorld.exe+26E138: 89 51 08              - mov [rcx+08],edx
+MonsterHunterWorld.exe+26E13B: C3                    - ret 
+MonsterHunterWorld.exe+26E13C: CC                    - int 3 
+MonsterHunterWorld.exe+26E13D: CC                    - int 3 
+MonsterHunterWorld.exe+26E13E: CC                    - int 3 
+MonsterHunterWorld.exe+26E13F: CC                    - int 3 
+MonsterHunterWorld.exe+26E140: 44 8B 41 08           - mov r8d,[rcx+08]
+MonsterHunterWorld.exe+26E144: 41 8B C0              - mov eax,r8d
+MonsterHunterWorld.exe+26E147: 2B C2                 - sub eax,edx
+MonsterHunterWorld.exe+26E149: 78 06                 - js MonsterHunterWorld.exe+26E151
+// ---------- INJECTING HERE ----------
+MonsterHunterWorld.exe+26E14B: 89 41 08              - mov [rcx+08],eax
+// ---------- DONE INJECTING  ----------
+MonsterHunterWorld.exe+26E14E: 8B C2                 - mov eax,edx
+MonsterHunterWorld.exe+26E150: C3                    - ret 
+MonsterHunterWorld.exe+26E151: C7 41 08 00 00 00 00  - mov [rcx+08],00000000
+MonsterHunterWorld.exe+26E158: 41 8B C0              - mov eax,r8d
+MonsterHunterWorld.exe+26E15B: C3                    - ret 
+MonsterHunterWorld.exe+26E15C: CC                    - int 3 
+MonsterHunterWorld.exe+26E15D: CC                    - int 3 
+MonsterHunterWorld.exe+26E15E: CC                    - int 3 
+MonsterHunterWorld.exe+26E15F: CC                    - int 3 
+MonsterHunterWorld.exe+26E160: 48 83 EC 48           - sub rsp,48
 }
 </AssemblerScript>
     </CheatEntry>
