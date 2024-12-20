@@ -250,7 +250,7 @@ SOPFFO.exe+38AAA2: CC                    - int 3
     <CheatEntry>
       <ID>33</ID>
       <Description>"master skill"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : STRANGER OF PARADISE FINAL FANTASY ORIGIN
   Version: 
@@ -323,7 +323,7 @@ SOPFFO.exe+15229CB: 49 8B CE                    - mov rcx,r14
     <CheatEntry>
       <ID>35</ID>
       <Description>"master skill available"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : STRANGER OF PARADISE FINAL FANTASY ORIGIN
   Version: 
@@ -477,7 +477,7 @@ SOPFFO.exe+33B72F: F3 0F 10 43 54        - movss xmm0,[rbx+54]
     <CheatEntry>
       <ID>37</ID>
       <Description>"dragon's treasure"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : STRANGER OF PARADISE FINAL FANTASY ORIGIN
   Version: 
@@ -550,7 +550,7 @@ SOPFFO.exe+6CA03F: CC                 - int 3
     <CheatEntry>
       <ID>43</ID>
       <Description>"dragon's big treasure"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : STRANGER OF PARADISE FINAL FANTASY ORIGIN
   Version: 
@@ -623,7 +623,7 @@ SOPFFO.exe+6CA05F: CC                 - int 3
     <CheatEntry>
       <ID>39</ID>
       <Description>"gill"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : STRANGER OF PARADISE FINAL FANTASY ORIGIN
   Version: 
@@ -696,7 +696,7 @@ SOPFFO.exe+6C9EA1: CC                       - int 3
     <CheatEntry>
       <ID>41</ID>
       <Description>"gill items"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : STRANGER OF PARADISE FINAL FANTASY ORIGIN
   Version: 
@@ -926,6 +926,15 @@ SOPFFO.exe+7E2C0D: CC                 - int 3
 SOPFFO.exe+7E2C0E: CC                 - int 3 
 }
 </AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>114</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>25</ID>
@@ -1004,7 +1013,7 @@ SOPFFO.exe+7E2C0E: CC                 - int 3
     <CheatEntry>
       <ID>42</ID>
       <Description>"No description"</Description>
-      <LastState Value="16" RealAddress="7FF60A7FC190"/>
+      <LastState Value="65535" RealAddress="7FF69713C190"/>
       <VariableType>4 Bytes</VariableType>
       <Address>SOPFFO.exe+479C190</Address>
     </CheatEntry>
